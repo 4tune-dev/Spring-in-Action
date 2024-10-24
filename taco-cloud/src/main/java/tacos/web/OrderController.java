@@ -1,5 +1,6 @@
 package tacos.web;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 import tacos.TacoOrder;
@@ -23,7 +24,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(TacoOrder order, SessionStatus sessionStatus) {
+    public String processOrder(@Valid TacoOrder order, SessionStatus sessionStatus) {
         log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
         return "redirect:/";
